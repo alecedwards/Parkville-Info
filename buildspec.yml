@@ -1,0 +1,21 @@
+version: 0.2
+env:
+  variables:
+    APP_NAME: "parkville-info"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14.x
+    commands:
+      - echo install process srarted
+      - npm install && npm install -g @angular/cli
+  build:
+    commands:
+      - echo build process started now
+      - ng build --prod
+  post_build:
+    commands:
+      - echo build process finished, we should upload to s3 now
+      - cd dist/$APP_NAME
+      - ls -la
+      - aws s3 sync . s3://parkville-info --delete
