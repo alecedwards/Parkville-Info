@@ -13,12 +13,6 @@ phases:
     commands:
       - echo build process started now
       - ng build --prod
-  post_build:
-    commands:
-      - echo build process finished, we should upload to s3 now
-      - cd dist/$APP_NAME
-      - ls -la
-      - aws s3 sync . s3://parkville-info --delete
 artifacts:
   files:
     - '**/*'
