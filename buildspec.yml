@@ -21,9 +21,5 @@ phases:
       - aws s3 sync . s3://parkville-info --delete
 artifacts:
   files:
-    - '3rdpartylicenses.txt'
-    - '*.js'
-    - '*.css'
-    - 'index.html'
-    - 'favicon.ico'
+    - '**/*'
   base-directory: 'dist'
